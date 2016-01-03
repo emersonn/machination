@@ -26,7 +26,7 @@ class StringState(State):
 
 
 class StringMachination(Machination):
-    def run(self, data):
+    def run(self, data, joiner=""):
         """Runs the StringMachination.
 
         Args:
@@ -40,4 +40,4 @@ class StringMachination(Machination):
 
         super(StringMachination, self).run(data, result)
 
-        return "".join(result)
+        return joiner.join(result)
