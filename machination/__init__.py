@@ -1,3 +1,8 @@
-from .machinery import State, Machination
-from .stringbuild import StringState, StringMachination
-from .valuebuild import ValueState, ValueMachination
+from machinery import Machination
+from machinery import State
+
+from stringbuild import StringMachination
+from stringbuild import StringState
+
+from valuebuild import ValueMachination
+from valuebuild import ValueState
