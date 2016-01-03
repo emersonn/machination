@@ -2,12 +2,13 @@
 String Builder
 Emerson Matson
 
-Subclasses Machination to allow generate a String response from the finite state
-machine. Assumes all states are accept states.
+Subclasses Machination to allow generate a String
+response from the finite state machine. Assumes all states are accept states.
 """
 
 from machination.machinery import Machination
 from machination.machinery import State
+
 
 class StringState(State):
     def __init__(self, name, handler, visit):
@@ -22,6 +23,7 @@ class StringState(State):
             acc.append(visit)
 
         super(StringState, self).__init__(name, handler, response)
+
 
 class StringMachination(Machination):
     def run(self, data):
