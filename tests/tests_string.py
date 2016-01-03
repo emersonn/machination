@@ -2,21 +2,30 @@ from machination.stringbuild import StringMachination as StrMach
 from machination.stringbuild import StringState as StrState
 
 
-def TestEasy(object):
+class TestEasy(object):
     def setup(self):
         states = []
 
         def first(args):
             return "second"
 
-        first_st = StrState("first", first, "dogs")
-
         def second(args):
             return None
 
-        states.append(
+        first_st = StrState("first", first, "dogs")
+        second_st = StrState("second", second, "cats")
+
+        states.extend([
             first_st,
-            StrState("second", second, "cats")
-        )
+            second_st
+        ])
 
         self.mach = StrMach(states, first_st)
+
+    def test_run(self):
+        rv = self.mach.run({
+            'first': 'cat',
+            'second': 'catter'
+        })
+
+        assert rv == "dogscats"
