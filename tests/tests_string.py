@@ -12,15 +12,15 @@ class TestEasy(object):
         def second(args):
             return None
 
-        first_st = StrState("first", first, "dogs")
-        second_st = StrState("second", second, "cats")
+        self.first_st = StrState("first", first, "dogs")
+        self.second_st = StrState("second", second, "cats")
 
         states.extend([
-            first_st,
-            second_st
+            self.first_st,
+            self.second_st
         ])
 
-        self.mach = StrMach(states, first_st)
+        self.mach = StrMach(states, self.first_st)
 
     def test_run(self):
         rv = self.mach.run({
@@ -37,3 +37,20 @@ class TestEasy(object):
         }, " ")
 
         assert rv == "dogs cats"
+
+    def test_add_state(self):
+        def third(args):
+            return None
+
+        self.mach.add_state(
+            StrState("third", third, "bigdogs")
+        )
+
+        assert "third" in self.mach.states
+
+    def test_new_start(self):
+        self.mach.set_start(
+            self.second_st
+        )
+
+        assert self.mach.start == self.second_st.name
