@@ -7,9 +7,10 @@ state machines in order to generate a response. Does not read strings, but
 interprets data specific to each state.
 """
 
+
 # TODO(Define accept states.)
-class State:
-    def __init__(self, name, handler, response=lambda: pass):
+class State(object):
+    def __init__(self, name, handler, response=lambda *i, **j: None):
         """Creates a new State.
 
         Args:
@@ -39,7 +40,7 @@ class State:
         return self.handler(data)
 
 
-class Machination:
+class Machination(object):
     def __init__(self, states, start):
         """Creates a Machination.
 
