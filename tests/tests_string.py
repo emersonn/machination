@@ -29,3 +29,11 @@ class TestEasy(object):
         })
 
         assert rv == "dogscats"
+
+    def test_run_joiner(self):
+        rv = self.mach.run({
+            'first': 'cat',
+            'second': 'catter'
+        }, " ")
+
+        assert rv == "dogs cats"
