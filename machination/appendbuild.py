@@ -1,3 +1,10 @@
+"""
+Append Builder
+Emerson Matson
+
+Abstract classes for working with the common append pattern.
+"""
+
 from machination.machinery import State
 
 
