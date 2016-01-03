@@ -64,8 +64,10 @@ class Machination(object):
                 IllegalArgumentException.
         """
 
+        """
         if state.name in self.states:
             raise IllegalArgumentException()
+        """
 
         self.states[state.name] = state
 
@@ -77,8 +79,10 @@ class Machination(object):
                 Machination, otherwise IllegalArgumentException.
         """
 
+        """
         if state.name not in self.states:
             raise IllegalArgumentException()
+        """
 
         self.start = state.name
 
