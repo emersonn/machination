@@ -95,3 +95,56 @@ class TestMultipleRun(object):
         }, " ")
 
         assert rv == "one two three"
+
+    def test_run_two(self):
+        rv = self.mach.run({
+            'one': '0',
+            'two': '420',
+            'three': '3'
+        }, " ")
+
+        assert rv == "one three"
+
+    def test_run_three(self):
+        rv = self.mach.run({
+            'one': '1',
+            'two': '1',
+            'three': '0'
+        }, " ")
+
+        assert rv == "one two"
+
+    def test_modify(self):
+        self.mach.set_start(self.third_st)
+
+        rv = self.mach.run({
+            'three': '420'
+        }, " ")
+
+        assert rv == "three"
+
+    def test_adjust(self):
+        rv = self.mach.run({
+            'one': '1',
+            'two': '0',
+            'three': '3'
+        }, " ")
+
+        assert rv == "one two three"
+
+        def four(args):
+            return "one"
+
+        self.fourth_st = StrState("four", four, "four")
+
+        self.mach.add_state(self.fourth_st)
+        self.mach.set_start(self.fourth_st)
+
+        rv = self.mach.run({
+            'one': '1',
+            'two': '0',
+            'three': '3',
+            'four': '4',
+        }, " ")
+
+        assert rv == "four one two three"
