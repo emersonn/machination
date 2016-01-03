@@ -1,3 +1,5 @@
+# flake8: NOQA
+
 from machinery import Machination
 from machinery import State
 
