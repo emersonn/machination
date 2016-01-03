@@ -148,3 +148,12 @@ class TestMultipleRun(object):
         }, " ")
 
         assert rv == "four one two three"
+
+    def test_set_exception(self):
+        pass
+
+    def test_add_exception(self):
+        pass
+
+    def test_init_exception(self):
+        pass
