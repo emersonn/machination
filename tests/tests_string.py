@@ -1,3 +1,10 @@
+"""
+Testing for String Builder
+Emerson Matson
+
+Run with nosetests.
+"""
+
 from machination.stringbuild import StringMachination as StrMach
 from machination.stringbuild import StringState as StrState
 
