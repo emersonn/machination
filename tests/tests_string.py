@@ -54,3 +54,44 @@ class TestEasy(object):
         )
 
         assert self.mach.start == self.second_st.name
+
+
+class TestMultipleRun(object):
+    def setup(self):
+        states = []
+
+        def one(args):
+            args = int(args)
+            if args > 0:
+                return "two"
+            return "three"
+
+        def two(args):
+            args = int(args)
+            if args == 0:
+                return "three"
+            return None
+
+        def three(args):
+            return None
+
+        self.first_st = StrState("one", one, "one")
+        self.second_st = StrState("two", two, "two")
+        self.third_st = StrState("three", three, "three")
+
+        states.extend([
+            self.first_st,
+            self.second_st,
+            self.third_st
+        ])
+
+        self.mach = StrMach(states, self.first_st)
+
+    def test_run_one(self):
+        rv = self.mach.run({
+            'one': '1',
+            'two': '0',
+            'three': '3'
+        }, " ")
+
+        assert rv == "one two three"
