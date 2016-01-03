@@ -41,7 +41,7 @@ class State(object):
 
 
 class Machination(object):
-    def __init__(self, states, start):
+    def __init__(self, given_states, start):
         """Creates a Machination.
 
         Args:
@@ -51,7 +51,7 @@ class Machination(object):
 
         # TODO(Check for duplicate states.)
         self.states = {}
-        for state in states:
+        for state in given_states:
             self.states[state.name] = state
 
         self.start = start.name
@@ -105,4 +105,5 @@ class Machination(object):
         #   there is some state which points to a None state.
         if current:
             evaluation = current.evaluate(data[current.name], acc)
-            self._run(data, evaluation, acc)
+            if evaluation in self.states:
+                self._run(data, self.states[evaluation], acc)

@@ -38,6 +38,6 @@ class StringMachination(Machination):
 
         result = []
 
-        super(StringMachination, self).__init__(data, result)
+        super(StringMachination, self).run(data, result)
 
         return "".join(result)
