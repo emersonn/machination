@@ -19,10 +19,10 @@ class StringState(State):
             visit: String to append to the response when this State is visited.
         """
 
-        def response(acc):
+        def str_response(acc):
             acc.append(visit)
 
-        super(StringState, self).__init__(name, handler, response)
+        super(StringState, self).__init__(name, handler, str_response)
 
 
 class StringMachination(Machination):
