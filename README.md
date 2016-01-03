@@ -29,6 +29,7 @@ to go to, or if there is a condition that cannot be satisfied.
 of data where the 'one_name' state gets the argument of 'cats.' An optional
 argument was passed where if we were to visit another state, we would
 concatenate the strings with a space instead of nothing at all.
+
   ```python
   mach.run({
     'one_name': 'cats'
