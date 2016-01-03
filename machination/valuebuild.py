@@ -7,23 +7,12 @@ Accept states.
 """
 
 from machination.machinery import Machination
-from machination.machinery import State
+
+from machination.appendbuild import AppendState
 
 
-class ValueState(State):
-    # TODO(Maybe abstract this out with String and Value. They both use a List.)
-    def __init__(self, name, handler, visit):
-        """Creates a new ValueState.
-
-        Args:
-            name, handler: See parent class.
-            visit: Value to add to the current value.
-        """
-
-        def value_response(acc):
-            acc.append(visit)
-
-        super(ValueState, self).__init__(name, handler, value_response)
+class ValueState(AppendState):
+    pass
 
 
 class ValueMachination(Machination):

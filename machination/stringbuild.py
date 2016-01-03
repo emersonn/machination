@@ -7,22 +7,12 @@ response from the finite state machine. Assumes all states are accept states.
 """
 
 from machination.machinery import Machination
-from machination.machinery import State
+
+from machination.appendbuild import AppendState
 
 
-class StringState(State):
-    def __init__(self, name, handler, visit):
-        """Creates a new StringState.
-
-        Args:
-            name, handler: See parent class.
-            visit: String to append to the response when this State is visited.
-        """
-
-        def str_response(acc):
-            acc.append(visit)
-
-        super(StringState, self).__init__(name, handler, str_response)
+class StringState(AppendState):
+    pass
 
 
 class StringMachination(Machination):
