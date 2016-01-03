@@ -72,3 +72,20 @@ class TestMultiple(object):
         })
 
         assert rv == 4
+
+    def test_through_two(self):
+        rv = self.mach.run({
+            'one': 1,
+            'two': 1
+        })
+
+        assert rv == 3
+
+    def test_inc_three(self):
+        rv = self.mach.run({
+            'one': 1,
+            'two': 0,
+            'three': 4
+        })
+
+        assert rv == 6
