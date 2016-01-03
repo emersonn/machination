@@ -56,7 +56,7 @@ class Machination(object):
 
         self.start = start.name
 
-    def add_state(state):
+    def add_state(self, state):
         """Adds a new state to the Machination.
 
         Args:
@@ -69,7 +69,7 @@ class Machination(object):
 
         self.states[state.name] = state
 
-    def set_start(state):
+    def set_start(self, state):
         """Sets the start state of the Machination.
 
         Args:
